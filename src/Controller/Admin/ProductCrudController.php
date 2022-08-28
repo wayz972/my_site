@@ -25,10 +25,11 @@ class ProductCrudController extends AbstractCrudController
             // les inputs de la page product
             TextField::new('name'),
             SlugField::new('slug')->setTargetFieldName('name'),
-             ImageField::new('Illustration')->setUploadDir('assets/'),
+             ImageField::new('Illustration')->setBasePath('uploads'),
             TextField::new('subtitle'),
             TextareaField::new('description'),
             MoneyField::new('price')->setCurrency('EUR'),
+            
             AssociationField::new('category'),
         ];
     }
