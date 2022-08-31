@@ -32,10 +32,16 @@
 
       }
 	</style>
-	<h1>nos produits</h1>
 
-	
-		<div class="row product-container">
+	<div class="row">
+	<div class="col-md-3">
+	<h1>filtrer</h1>
+
+{{form(form)}}
+
+	</div>
+	<div class="col-md-9">
+	<div class="row product-container">
 			{% for items in products %}
 				<div class="col-md-4">
 					<div class="product-item text-center">
@@ -47,5 +53,11 @@
 				</div>
 			{% endfor %}
 		</div>
+	</div>
+	</div>
+	<h1>nos produits</h1>
+
+	
+		
 
 {% endblock %}

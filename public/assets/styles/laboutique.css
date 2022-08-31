@@ -1,7 +1,14 @@
+body{
+    position: relative;
+}
+
+
+
 .footer-custom{
     text-align: center;
-    position: fixed;
+    position: absolute;
     bottom:0;
     width: 100%;
 background-color: #dfeaff;
+height: 100px;
 }

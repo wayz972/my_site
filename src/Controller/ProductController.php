@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Classe\Search;
 use App\Entity\Product;
+use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,13 +25,19 @@ class ProductController extends AbstractController
     #[Route('/nos-produits', name: 'app_products')]
     public function index(): Response
     {
+
+
+     $search =new Search();
+    $form=$this->createForm(SearchType::class,$search);
+
      //je vais chercher la class grace a la methode getrepository
        $products= $this->entitymanager->getRepository(Product::class)->findAll();
 
  
 
         return $this->render('product/index.html.twig', [
-        'products'=>$products    
+        'products'=>$products  ,
+        'form'=>$form->createView()  
         ]);
     }
 
