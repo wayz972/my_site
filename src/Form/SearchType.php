@@ -5,6 +5,7 @@ namespace App\Form;
 
 use App\Classe\Search;
 use App\Entity\Category;
+use App\Entity\Product;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -27,6 +28,7 @@ class SearchType extends AbstractType
         'class'=>'form-control-sm']
     ]) 
       //relier mon input a une entité
+      
      ->add('categories',EntityType::class,[
         'label'=>false,
         'required'=>false,
@@ -39,6 +41,7 @@ class SearchType extends AbstractType
             'attr'=>['class'=>'btn-info  btn-primary']
 
         ])
+
     ;
 
 

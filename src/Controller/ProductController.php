@@ -7,6 +7,7 @@ use App\Entity\Product;
 use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -23,7 +24,7 @@ class ProductController extends AbstractController
 
 
     #[Route('/nos-produits', name: 'app_products')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
 
 
@@ -33,8 +34,14 @@ class ProductController extends AbstractController
      //je vais chercher la class grace a la methode getrepository
        $products= $this->entitymanager->getRepository(Product::class)->findAll();
 
- 
+       //methode handlerequest -> arrete toi ecoute la requete
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+
+         $products= $this->entitymanager->getRepository(Product::class)->findWidthSearch($search);
+     
+        }
         return $this->render('product/index.html.twig', [
         'products'=>$products  ,
         'form'=>$form->createView()  
