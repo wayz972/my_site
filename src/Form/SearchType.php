@@ -20,6 +20,7 @@ class SearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
 
 {
+    //ici nous avon crée 3 entrées
     $builder
     ->add('string',TextType::class,[
         'label'=>'recherche',
@@ -27,7 +28,7 @@ class SearchType extends AbstractType
         "attr"=>["placeholder"=>"votre de recherche ...",
         'class'=>'form-control-sm']
     ]) 
-      //relier mon input a une entité
+      // EntityType = > relier mon input a une entité de mon formulaire 
       
      ->add('categories',EntityType::class,[
         'label'=>false,

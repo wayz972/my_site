@@ -48,20 +48,20 @@ class ProductRepository extends ServiceEntityRepository
             ->select('c', 'p')
             ->join('p.category', 'c');
 
-        if (!empty($search->categories)) {
+        if (!empty($search->getCategories())) {
             //j'ai besoin de mes id.categie sois dans la liste categories
             // que je tenvoie en parametre dans mon objet search
             $query = $query->andWhere('c.id IN (:categories)')
-                ->setParameter('categories', $search->categories);
+                ->setParameter('categories', $search->getCategories());
         }
 
 
 
-        if (!empty($search->string)) {
+        if (!empty($search->getString())) {
             //j'ai besoin de mes id.categie sois dans la liste categories
             // que je tenvoie en parametre dans mon objet search
             $query = $query->andWhere('p.name LIKE :string')
-                ->setParameter('string', "%{$search->string}%");
+                ->setParameter('string', "%{$search->getString()}%");
         }
 
         return $query->getQuery()->getResult();
