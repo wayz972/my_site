@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{product.name}}
+{% block title %}
+	{{product.name}}
 {% endblock %}
 {% block content %}
 	<style>
@@ -27,34 +28,36 @@
 			font-size: 14px;
 			font-weight: bold;
 		}
-      .product-container{
-         margin-bottom: 100px;
+		.product-container {
+			margin-bottom: 100px;
 
-      }
+		} 
+		.space{
+			height: 200px;
+		}
 	</style>
+	
 	<h1>{{product.name}}</h1>
 
-    <div class="row">
+	<div class="row">
 
- <div class="col-md-4">
-  <img class="img-fluid" src="/uploads/{{product.Illustration}}" alt="{{product.name}}" >
- </div>
- <div class="col-md-7 my-auto">
-   <h3>{{product.name}}</h3>
-   <p>{{product.subtitle}}</p>
-<span class="product-price">{{(product.price /100)|number_format(2)}}€</span>
-   <hr>
-   <p>{{product.description}}</p>
-   <hr>
+		<div class="col-md-4">
+			<img class="img-fluid" src="/uploads/{{product.Illustration}}" alt="{{product.name}}">
+		</div>
+		<div class="col-md-7 my-auto">
+			<h3>{{product.name}}</h3>
+			<p>{{product.subtitle}}</p>
+			<span class="product-price">{{(product.price /100)|number_format(2)}}€</span>
+			<hr>
+			<p>{{product.description}}</p>
+			<hr>
 
-<a href=""class="btn btn-primary">Ajouter au panier</a>
- </div>
+			<a href="{{path('add_card',{'id':product.id})}}" class="btn btn-primary">Ajouter au panier</a>
+		</div>
+		
 
-    </div>
+	</div>
 
-	
-	
-        
-    
-
+<div class="space">
+		</div>
 {% endblock %}
