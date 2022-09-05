@@ -5,33 +5,36 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content=" la boutique ">
 		<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-		<meta name="generator" content="Jekyll v4.1.1">
-		{% block title %}
-			La boutique
-		{% endblock %}
-		<!-- Bootstrap core CSS -->
-		<link href="{{asset('assets/styles/bootstrap.min.css') }}" rel="stylesheet">
-
-		<style>
-			.bd-placeholder-img {
-				font-size: 1.125rem;
-				text-anchor: middle;
-				-webkit-user-select: none;
-				-moz-user-select: none;
-				-ms-user-select: none;
-				user-select: none;
-			}
-
-			@media(min-width: 768px) {
-				.bd-placeholder-img-lg {
-					font-size: 3.5rem;
-				}
-			}
-		</style>
+		<meta
+		name="generator" content="Jekyll v4.1.1">
 		<!-- Custom styles for this template -->
 		<link href="{{asset('assets/styles/caroussel.css') }}" rel="stylesheet">
 		<link rel="stylesheet" href="{{asset('assets/styles/laboutique.css')}}">
+		<link href="{{asset('assets/styles/bootstrap.min.css') }}" rel="stylesheet">
+		{% block title %}
+
+			<title>la boutique</title>
+		{% endblock %}
 	</head>
+	<!-- Bootstrap core CSS -->
+
+	<style>
+		.bd-placeholder-img {
+			font-size: 1.125rem;
+			text-anchor: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		@media(min-width: 768px) {
+			.bd-placeholder-img-lg {
+				font-size: 3.5rem;
+			}
+		}
+	</style>
+
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -130,7 +133,7 @@
 
 			{% endif %}
 			<!-- Marketing messaging and featurettes
-			    ================================================== -->
+									    ================================================== -->
 			<!-- Wrap the rest of the page in another container to center all the content. -->
 
 			<div class="container marketing {%if block ('carousel') is not  defined %}mt-5{% endif %}"> {% block content %}{% endblock %}
@@ -139,17 +142,20 @@
 				<!-- /.container -->
 
 				<!-- FOOTER -->
-				<footer class="footer-custom">
+			</main>
+			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
-					<p>&copy; 2017-2020 Company, Inc.</p>
-				</br>
-				<small>
-					La boutique
-					<a href="#">politique</a>
-					&middot;
-					<a href="#">confidentialité</a>
-				</p>
-			</small>
+			<script src="{{asset('assets/js/bootstrap.bundle.js') }}"></script>
 		</body>
+		<footer class="footer-custom">
+
+			<p>&copy; 2017-2020 Company, Inc.</p>
+		</br>
+		<small>
+			La boutique
+			<a href="#">politique</a>
+			&middot;
+			<a href="#">confidentialité</a>
+		</small>
 	</html>
-</footer></main><script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script><script src="{{asset('assets/js/bootstrap.bundle.js') }}"></script></body></html>
+</footer></html>

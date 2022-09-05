@@ -17,12 +17,16 @@ class Card
     public function Add($id)
     {
 
-        $session = $this->requestStack->getSession();
-
-      $session->set('card',[
-       'id'=>$id,
-       'quantity'=>1
-      ]);
+        $session = $this->requestStack->getSession()->get('card', []);
+       // si mon id existe dans ma variable alors incremente la 
+        if(!empty($session[$id])){
+            $session[$id] ++;
+        }else{
+            //sinon joute la valzur un
+            $session[$id]=1; 
+        }
+   // update mon panier
+        $this->requestStack->getSession()->set('card',$session);
     } 
     public function get(){
 

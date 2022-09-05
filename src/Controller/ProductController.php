@@ -57,8 +57,6 @@ class ProductController extends AbstractController
    {
 
 
-
-
       //je vais chercher la class grace a la methode getrepository methode findOneBySlug
       $product = $this->entitymanager->getRepository(Product::class)->findOneBySlug($slug);
 
