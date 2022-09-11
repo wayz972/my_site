@@ -1,7 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CardController!{% endblock %}
+{% block title %}mon Panier {% endblock %}
 
-{% block body %}
+{% block content %}
+<h1> Mon panier </h1>
+ Retrouver l'ensemble des produits que vous avez ajouté à votre panier 
+
+<hr>
+
+    
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">image</th>
+      <th scope="col">produit</th>
+      <th scope="col">quantité</th>
+      <th scope="col">prix</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+ 
+ 
+  
+    {% set total = null %}
+  {% for product in card %}
+    
+    <tr>
+      <th>
+    <img src="/uploads//{{product.product.illustration}}" width="50px"alt="" srcset=""></br>
+      </th>
+      <th>{{product.product.name}}</th>
+      <td>{{product.quantity}}</td>
+      <td>{{(product.product.price /100)|number_format(2)}}€</td>
+      <td>{{(product.product.price * product.quantity /100)|number_format(2)}}€</td>
+      
+    </tr>
+      {% set total = total + (product.quantity * product.product.price)%}
+  {% endfor %}
+  </tbody>
+</table>
+<div class="text-right">
+<p>nombre de produits : {{card|length}}</p>
+<p>total de mon panier :{{(total /100)|number_format(2)}}€</p>
+<a href="" class="btn btn-success btn-block"> valider mon panier</a>
+</div>
 
 {% endblock %}

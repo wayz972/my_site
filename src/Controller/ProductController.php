@@ -27,6 +27,7 @@ class ProductController extends AbstractController
    public function index(Request $request): Response
    {
 
+    
       //initialiser ma class
       $search = new Search();
       // je lui passe le methode createForm a ma class 
