@@ -40,4 +40,12 @@ class Card
         $session = $this->requestStack->getSession();
         return $session->remove('card');
     }
+
+    public function delete($id)
+    {
+        $session = $this->requestStack->getSession()->get('card', []);
+        
+         unset($session[$id]);
+        return $this->requestStack->getSession()->set('card',$session);
+    }
 }

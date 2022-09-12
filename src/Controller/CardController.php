@@ -64,4 +64,15 @@ if (!empty($card->get())) {
        
           return $this->redirectToRoute('app_products');
     }
+
+    #[Route('/card/delete{id}', name: 'delete_to_card')]
+    public function delete(Card $card,$id): Response
+    {
+
+
+     $card->delete($id);
+      
+       
+          return $this->redirectToRoute('app_card');
+    }
 }

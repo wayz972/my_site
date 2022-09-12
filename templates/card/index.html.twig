@@ -8,7 +8,7 @@
 
 <hr>
 
-    
+    {% if card|length > 0 %}
     <table class="table">
   <thead>
     <tr>
@@ -17,6 +17,7 @@
       <th scope="col">quantité</th>
       <th scope="col">prix</th>
       <th scope="col">Total</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -35,7 +36,11 @@
       <td>{{product.quantity}}</td>
       <td>{{(product.product.price /100)|number_format(2)}}€</td>
       <td>{{(product.product.price * product.quantity /100)|number_format(2)}}€</td>
-      
+        <th>
+        <a href="{{path('delete_to_card',{'id':product.product.id})}}">
+    <img src="/uploads/poubelle-de-recyclage.png" width="22px"alt="" srcset=""></br>
+    </a>
+      </th>
     </tr>
       {% set total = total + (product.quantity * product.product.price)%}
   {% endfor %}
@@ -46,5 +51,9 @@
 <p>total de mon panier :{{(total /100)|number_format(2)}}€</p>
 <a href="" class="btn btn-success btn-block"> valider mon panier</a>
 </div>
+   {% else %}
+   <p>Mon panier est vide  </p>
+    {% endif %}
+
 
 {% endblock %}
