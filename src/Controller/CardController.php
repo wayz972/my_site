@@ -22,23 +22,11 @@ public function __construct(ManagerRegistry $entityManager)
     public function index(Card $card): Response
     {
   
-      $cardComplet= [];
-     
-if (!empty($card->get())) {
- 
-  foreach($card->get() as $id=> $quantity){
-    
-    
-    $cardComplet[] = [
-      'product'=> $this->entityManager->getRepository(Product::class)->find($id),
-      'quantity'=>$quantity
-    ];
-  }
-}
+
       
     //   dd($cardComplet);
         return $this->render('card/index.html.twig', [
-             'card'=> $cardComplet
+             'card'=> $card->getFull(),
         ]);
     }
 
@@ -47,10 +35,24 @@ if (!empty($card->get())) {
     public function add(Card $card,$id): Response
     {
 
-
+  
      $card->Add($id);
+ 
       
 
+          return $this->redirectToRoute('app_card');
+    }
+
+
+
+    #[Route('/card/removefull', name: 'removefull_card')]
+    public function RemoveFull(Card $card): Response
+    {
+
+
+     $card->removeFull();
+      
+       
           return $this->redirectToRoute('app_card');
     }
 
