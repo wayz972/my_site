@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestAxiosController!{% endblock %}
+
+{% block content %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/Users/jerem/Desktop/cours_symphony/my_site/src/Controller/TestAxiosController.php'|file_link(0) }}">src/Controller/TestAxiosController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/Users/jerem/Desktop/cours_symphony/my_site/templates/test_axios/index.html.twig'|file_link(0) }}">templates/test_axios/index.html.twig</a></code></li>
+    </ul>
+</div>
+{# {% if resultat is not null %}
+    
+{% for items in  resultat   %}
+<div>
+    <p>{{items.email}}</p>
+{% endfor %}
+{% endif %} #}
+
+</div>
+     			  {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+
+            
+            
+    
+{% endblock %}
+{% endblock %}

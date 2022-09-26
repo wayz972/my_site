@@ -35,6 +35,7 @@ class Card
         // update mon panier
         $this->requestStack->getSession()->set('card', $session);
     }
+    //recuperer mon panier 
     public function get()
     {
 
@@ -42,6 +43,7 @@ class Card
         return $session->get('card');
     }
 
+    //supprimer de mon panier
     public function remove()
     {
         $session = $this->requestStack->getSession();
@@ -79,7 +81,7 @@ class Card
     }
 
 
-
+//vider totalement mon panier
     public function removeFull()
     {
         return $session = $this->requestStack->getSession()->remove('card');

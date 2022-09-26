@@ -22,9 +22,6 @@ public function __construct(ManagerRegistry $entityManager)
     public function index(Card $card): Response
     {
   
-
-      
-    //   dd($cardComplet);
         return $this->render('card/index.html.twig', [
              'card'=> $card->getFull(),
         ]);
