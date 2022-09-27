@@ -7,14 +7,19 @@
 
 <div class="container"> 
 <div class="d-flex justify-content-end">
-<a class="btn btn-info" href="">ajouter une Adresse</a>
+<a class="btn btn-info" href="{{ path('app_account_add_adresse') }}">ajouter une Adresse</a>
 </div>
 <div class="d-flex justify-content-start">
 <a href="{{path('app_account')}}">Retour</a>
 <hr>
-</div class="d-flex justify-content-start">
-<p>Vue de Mes Adresses</p>
+</div>
+    {% if app.user.adresses|length == 0 %}
 
+    Vous n'avez encore ajouté d'adresse dans votre compte <a href="{{ path('app_account_add_adresse') }}">cliquer ici</a>
+    {% endif %}
+        <div class ="d-flex justify-content-start">
+
+</div>
 </div>
 
 
