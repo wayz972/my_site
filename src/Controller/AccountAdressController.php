@@ -24,6 +24,7 @@ class AccountAdressController extends AbstractController
     {
         $address = new Adresse();
         $form = $this->createForm(AdresseType::class, $address);
+        $form->handleRequest($request);
         return $this->render('account_adress/add_adresse.html.twig', [
             'form' =>$form->createView()
         ]);

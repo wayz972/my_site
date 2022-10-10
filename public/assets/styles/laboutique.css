@@ -11,4 +11,6 @@ footer {
     width: 100%;
     background-color: #dfeaff;
     height: 100px ;
+    display: flex;
+    flex-grow: 1;
 }
