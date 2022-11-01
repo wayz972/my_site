@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\AdresseRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AdresseRepository::class)]
@@ -15,8 +13,9 @@ class Adresse
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'adresses')]
-    private Collection $user;
+    #[ORM\ManyToOne(inversedBy: 'adresses')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
@@ -27,7 +26,7 @@ class Adresse
     #[ORM\Column(length: 255)]
     private ?string $lastname = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $company = null;
 
     #[ORM\Column(length: 255)]
@@ -45,36 +44,19 @@ class Adresse
     #[ORM\Column(length: 255)]
     private ?string $phone = null;
 
-    public function __construct()
-    {
-        $this->user = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getUser(): Collection
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function addUser(User $user): self
+    public function setUser(?User $user): self
     {
-        if (!$this->user->contains($user)) {
-            $this->user->add($user);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        $this->user->removeElement($user);
+        $this->user = $user;
 
         return $this;
     }
@@ -120,7 +102,7 @@ class Adresse
         return $this->company;
     }
 
-    public function setCompany(string $company): self
+    public function setCompany(?string $company): self
     {
         $this->company = $company;
 

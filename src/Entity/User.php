@@ -35,8 +35,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $lastname = null;
 
-    #[ORM\ManyToMany(targetEntity: Adresse::class, mappedBy: 'user')]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Adresse::class)]
     private Collection $adresses;
+
 
     public function __construct()
     {
@@ -149,7 +150,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->adresses->contains($adress)) {
             $this->adresses->add($adress);
-            $adress->addUser($this);
+            $adress->setUser($this);
         }
 
         return $this;
@@ -158,9 +159,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeAdress(Adresse $adress): self
     {
         if ($this->adresses->removeElement($adress)) {
-            $adress->removeUser($this);
+            // set the owning side to null (unless already changed)
+            if ($adress->getUser() === $this) {
+                $adress->setUser(null);
+            }
         }
 
         return $this;
     }
+
+
+
+
 }

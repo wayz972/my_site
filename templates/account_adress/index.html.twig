@@ -16,6 +16,23 @@
     {% if app.user.adresses|length == 0 %}
 
     Vous n'avez encore ajouté d'adresse dans votre compte <a href="{{ path('app_account_add_adresse') }}">cliquer ici</a>
+    {% else %}
+    <div class="row">
+    {% for adresse in app.user.adresses %}
+    <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+  
+  <div class="card-body">
+    <h5 class="card-title">{{adresse.name}}</h5>
+    <p class="card-text">{{adresse.adress}}  <br> {{adresse.postal}} - {{adresse.city}}</p>
+    <a href="{{path ('app_account_add_adresse_edit',{'id':adresse.id})}}" >modifier</a> | <a href="{{path('app_account_adresse_delete',{'id':adresse.id})}}" >supprimer</a>
+  </div>
+</div>
+    
+    </div>
+     {% endfor %}
+    </div>
+
     {% endif %}
         <div class ="d-flex justify-content-start">
 
