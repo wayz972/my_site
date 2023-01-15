@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Valider ma conmmande- La boutique Française
+
+{% endblock %}
+
+{% block content %}
+
+<style>
+.form-check,.order-summery{
+    background-color: #f4f8ff;
+    padding: 20px;
+}
+
+</style>
+
+<h2>je passe ma commande </h2>
+<p> choisissez vos préférences avant de passer votre commande sur la boutique Française </p>
+<hr>
+<div class="row">
+<div class="col-md-6">
+ <p> Choisir mon adresse de livraison</p>
+ {% set formHtml  %}
+ {{form(form)}}
+  {% endset %} 
+  {# je remplace les br dans ma classe #}
+ {{formHtml|replace({'[br]':'<br/>'})|raw}}
+
+</div>
+<div class="col-md-6">
+<div class="text-center">
+<p>Récape de ma commande </p>
+<p>retrouvez le récapitulatif de vos produits</p>
+</div>
+<div class="order-summery">
+{% for product in card %}
+<div class="row {%if key > 0 %}mt-2{%endif%}">
+<div class="col-2 my-auto">
+<img src="/uploads//{{product.product.illustration}}" width="50px" alt="" srcset="">
+</div>
+<div class="col-8 my-auto">
+{{product.product.name}}<br/>
+{{product.product.subtitle}}
+</div>
+<div class="col-2 my-auto">x {{product.quantity}}</div>
+</div>
+</div>   
+{% endfor %}
+<p> Bouton pour payer </p>
+
+</div>
+</div>
+{% endblock %}

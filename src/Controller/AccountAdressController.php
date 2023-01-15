@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Card;
 use App\Entity\Adresse;
 use App\Form\AdresseType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -29,8 +30,9 @@ public function __construct(EntityManagerInterface $EntityManager )
     }
 
     #[Route('/compte/ajouter_adresse', name: 'app_account_add_adresse')]
-    public function add(Request $request): Response
+    public function add(Card $card,Request $request): Response
     {
+
         $address = new Adresse();
         $form = $this->createForm(AdresseType::class, $address);
         $form->handleRequest($request);
@@ -41,7 +43,12 @@ public function __construct(EntityManagerInterface $EntityManager )
           
             $this->EntityManager->persist($address);
             $this->EntityManager->flush();
-            return $this->redirectToRoute('app_account_adress');
+            if($card->get()){
+                return $this->redirectToRoute('app_order');
+            }else{
+
+                return $this->redirectToRoute('app_account_adress');
+            }
         
         }
         return $this->render('account_adress/add_adresse.html.twig', [

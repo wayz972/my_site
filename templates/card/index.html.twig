@@ -50,4 +50,16 @@
 		<a href="{{path('delete_to_card',{'id':product.product.id})}}">
 			<img src="/uploads/poubelle-de-recyclage.png" width="22px" alt="" srcset=""></br>
 	</th>
-</a></th></tr>{% set total = total + (product.quantity * product.product.price)%}{% endfor %}</tbody></table><div class="text-right"><p>nombre de produits :{{card|length}}</p><p>total de mon panier :{{(total /100)|number_format(2)}}€</p><a href="" class="btn btn-success btn-block">valider mon panier</a></div>{% else %}<p>Mon panier est vide</p>{% endif %}{% endblock %}
+</a>
+</th>
+</tr>{% set total = total + (product.quantity * product.product.price)%}{% endfor %}
+</tbody>
+</table>
+<div class="text-right">
+<p>nombre de produits :{{card|length}}</p>
+<p>total de mon panier :{{(total /100)|number_format(2)}}€</p>
+<a href="{{path('app_order')}}" class="btn btn-success btn-block">valider mon panier</a>
+</div>
+{% else %}
+<p>Mon panier est vide</p>
+{% endif %}{% endblock %}
